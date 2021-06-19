@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Board from "./Board";
+import TileSelector from "./TileSelector";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component<{}, { isDown: boolean }> {
+  constructor(props: {}) {
+    super(props);
+
+    this.state = { isDown: false };
+
+    this.mouseDown = this.mouseDown.bind(this);
+  }
+
+  mouseDown(down: boolean) {
+    console.log(`handleMouseUp: ${this.state.isDown}`);
+    this.setState({ isDown: down });
+  }
+  
+
+  render() {
+    const isDown = this.state.isDown;
+
+    return (
+      <div className="App" onMouseUp={() => this.mouseDown(false)} onMouseLeave={() => this.mouseDown(false)}>
+        <TileSelector />
+        <Board isDown={isDown} mouseDown={this.mouseDown}/>
+      </div>
+    );
+  }
 }
-
-export default App;
