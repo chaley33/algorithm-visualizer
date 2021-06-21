@@ -1,5 +1,9 @@
+$start-color: #0099ff;
+$goal-color: #ff8800;
+$wall-color: #a200ff;
+
 .App {
-  background-color: #282c34;
+  background-color: #1d1d1d;
   color: white;
   min-height: 90vh;
   display: flex;
@@ -15,13 +19,13 @@
   width: 50vmin;
   margin: 0;
   background: green;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid rgb(255, 255, 255);
 }
 
 %Tile {
   position: relative;
   flex-basis: calc(10%);
-  border: 1px solid rgb(31, 31, 31);
+  border: 1px solid rgb(220, 220, 220);
   box-sizing: border-box;
   max-height: 10%;
   max-width: 10%;
@@ -32,8 +36,8 @@
 }
 
 .TileSelector {
-  background-color: rgb(51, 51, 51);
-  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(30, 30, 30);
+  border: 2px solid rgb(255, 255, 255);
   border-right: 1px;
   height: calc(
     50vmin - 4px + 2px
@@ -47,34 +51,34 @@
 }
 
 .hover-tile {
-  background-color: #000;
+  background-color: rgb(255, 255, 255);
   width: 100%;
   height: 100%;
 }
 
 .default-tile {
   @extend %Tile;
-  background-color: #fff;
+  background-color: rgb(19, 19, 19);
 }
 
 .start-tile {
   @extend %Tile;
-  background-color: #0099ff;
+  background-color: $start-color;
 }
 
 .goal-tile {
   @extend %Tile;
-  background-color: #fbff00;
+  background-color: $goal-color;
 }
 
 .wall-tile {
   @extend %Tile;
-  background-color: #cc00ff;
+  background-color: $wall-color;
 }
 
 .optimal-path-tile {
   @extend %Tile;
-  background-color: rgb(1, 163, 37);
+  background-color: #00cc3d;
 }
 
 .suboptimal-path-tile {
@@ -88,7 +92,7 @@
 
 .start-btn {
   @extend %selector-btn;
-  background-color: #0099ff;
+  background-color: $start-color;
 
   &:hover {
     background-color: #0075c4;
@@ -97,19 +101,19 @@
 
 .goal-btn {
   @extend %selector-btn;
-  background-color: #fbff00;
+  background-color: $goal-color;
 
   &:hover {
-    background-color: #c5c900;
+    background-color: #c56900;
   }
 }
 
 .wall-btn {
   @extend %selector-btn;
-  background-color: #cc00ff;
+  background-color: $wall-color;
 
   &:hover {
-    background-color: #a100c9;
+    background-color: #9300e9;
   }
 }
 
@@ -120,7 +124,7 @@
 
 .play-btn {
   @extend %selector-btn;
-  background-color: #00CC3D;
+  background-color: #00cc3d;
   margin-top: auto;
 
   &:hover {

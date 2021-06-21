@@ -12,6 +12,7 @@ export enum TileEnum {
 export default class Tile extends React.Component<
   {
     key: number;
+    id: number;
     isDown: boolean;
     selectedType: TileEnum;
     placeStart: () => boolean;
@@ -20,14 +21,13 @@ export default class Tile extends React.Component<
     removeGoal: () => void;
   },
   {
-    bg: string;
-    trueBg: string;
     type: TileEnum;
     className: string;
   }
 > {
   constructor(props: {
     key: number;
+    id: number;
     isDown: boolean;
     selectedType: TileEnum;
     placeStart: () => boolean;
@@ -37,8 +37,6 @@ export default class Tile extends React.Component<
   }) {
     super(props);
     this.state = {
-      bg: "white",
-      trueBg: "white",
       type: TileEnum.Default,
       className: "default-tile",
     };

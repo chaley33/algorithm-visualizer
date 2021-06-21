@@ -54,6 +54,7 @@ export default class Board extends React.Component<
     return (
       <Tile
         key={i}
+        id={i}
         isDown={this.props.isDown}
         selectedType={this.props.selectedTileType}
         placeStart={this.placeStart}
