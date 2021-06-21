@@ -1,3 +1,7 @@
+Very early work in progress.
+
+Intended to visualize and provide information on many different types of algorithms, primarily consisting of pathfinding and sorting algorithms. Made with React.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
