@@ -33,6 +33,13 @@ export default class TileSelector extends React.Component<
           >
             Wall
           </Button>
+          <Button
+            variant="contained"
+            className="erase-btn"
+            onClick={() => this.props.setSelectedTileType(TileEnum.Default)}
+          >
+            Erase
+          </Button>
         </div>
       </StylesProvider>
     );

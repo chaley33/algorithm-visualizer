@@ -10,10 +10,27 @@ export enum TileEnum {
 }
 
 export default class Tile extends React.Component<
-  { key: number; isDown: boolean; selectedType: TileEnum },
-  { bg: string; trueBg: string; type: TileEnum; className: string }
+  {
+    key: number;
+    isDown: boolean;
+    selectedType: TileEnum;
+    placeStart: () => boolean;
+    placeGoal: () => boolean;
+  },
+  {
+    bg: string;
+    trueBg: string;
+    type: TileEnum;
+    className: string;
+  }
 > {
-  constructor(props: { key: number; isDown: boolean; selectedType: TileEnum }) {
+  constructor(props: {
+    key: number;
+    isDown: boolean;
+    selectedType: TileEnum;
+    placeStart: () => boolean;
+    placeGoal: () => boolean;
+  }) {
     super(props);
     this.state = {
       bg: "white",
@@ -23,8 +40,7 @@ export default class Tile extends React.Component<
     };
   }
 
-  changeColor() {
-
+  changeType() {
     if (this.props.selectedType !== this.state.type) {
       this.setState({ type: this.props.selectedType }, () => {
         switch (this.state.type) {
@@ -32,9 +48,11 @@ export default class Tile extends React.Component<
             this.setState({ className: "default-tile" });
             break;
           case TileEnum.Start:
+            if (!this.props.placeStart()) break;
             this.setState({ className: "start-tile" });
             break;
           case TileEnum.Goal:
+            if (!this.props.placeGoal()) break;
             this.setState({ className: "goal-tile" });
             break;
           case TileEnum.Wall:
@@ -47,7 +65,7 @@ export default class Tile extends React.Component<
 
   handleMouseEnter() {
     if (this.props.isDown) {
-      this.changeColor();
+      this.changeType();
     }
   }
 
@@ -56,7 +74,7 @@ export default class Tile extends React.Component<
     return (
       <div
         className={className}
-        onMouseDownCapture={this.changeColor.bind(this)}
+        onMouseDownCapture={this.changeType.bind(this)}
         onMouseEnter={this.handleMouseEnter.bind(this)}
       >
         <HoverTile />

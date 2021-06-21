@@ -82,17 +82,26 @@
   background-color: rgb(15, 240, 228);
 }
 
-.start-btn {
-  background-color: #0099ff;
+%selector-btn {
   margin: 10%;
+}
+
+.start-btn {
+  @extend %selector-btn;
+  background-color: #0099ff;
 }
 
 .goal-btn {
+  @extend %selector-btn;
   background-color: #fbff00;
-  margin: 10%;
 }
 
 .wall-btn {
+  @extend %selector-btn;
   background-color: #cc00ff;
-  margin: 10%;
+}
+
+.erase-btn {
+  @extend %selector-btn;
+  background-color:rgb(255, 255, 255)
 }
