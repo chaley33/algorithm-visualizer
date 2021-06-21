@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import Board from "./Board";
 import { TileEnum } from "./Tile";
 import TileSelector from "./TileSelector";
@@ -27,6 +27,7 @@ export default class App extends React.Component<
 
   render() {
     const isDown = this.state.isDown;
+    const selectedTileType = this.state.selectedTileType;
 
     return (
       <div
@@ -35,7 +36,7 @@ export default class App extends React.Component<
         onMouseLeave={() => this.mouseDown(false)}
       >
         <TileSelector setSelectedTileType={this.setSelectedTileType} />
-        <Board isDown={isDown} mouseDown={this.mouseDown} />
+        <Board isDown={isDown} mouseDown={this.mouseDown} selectedTileType={selectedTileType}/>
       </div>
     );
   }

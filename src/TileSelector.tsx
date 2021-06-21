@@ -2,7 +2,6 @@ import React from "react";
 import { TileEnum } from "./Tile";
 import Button from "@material-ui/core/Button";
 import { StylesProvider } from "@material-ui/core/styles";
-import "./App.css";
 
 export default class TileSelector extends React.Component<
   { setSelectedTileType: (type: TileEnum) => void },
