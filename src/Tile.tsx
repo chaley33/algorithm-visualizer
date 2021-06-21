@@ -70,9 +70,8 @@ export default class Tile extends React.Component<
   }
 
   handleSpecialRemovals() {
-    if (this.state.type === TileEnum.Start) {
-      this.props.removeStart();
-    } else if (this.state.type === TileEnum.Goal) this.props.removeGoal();
+    if (this.state.type === TileEnum.Start) this.props.removeStart();
+    else if (this.state.type === TileEnum.Goal) this.props.removeGoal();
   }
 
   handleMouseEnter() {

@@ -89,19 +89,41 @@
 .start-btn {
   @extend %selector-btn;
   background-color: #0099ff;
+
+  &:hover {
+    background-color: #0075c4;
+  }
 }
 
 .goal-btn {
   @extend %selector-btn;
   background-color: #fbff00;
+
+  &:hover {
+    background-color: #c5c900;
+  }
 }
 
 .wall-btn {
   @extend %selector-btn;
   background-color: #cc00ff;
+
+  &:hover {
+    background-color: #a100c9;
+  }
 }
 
 .erase-btn {
   @extend %selector-btn;
-  background-color:rgb(255, 255, 255)
+  background-color: rgb(255, 255, 255);
+}
+
+.play-btn {
+  @extend %selector-btn;
+  background-color: #00CC3D;
+  margin-top: auto;
+
+  &:hover {
+    background-color: #00992e;
+  }
 }
