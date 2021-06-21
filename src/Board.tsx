@@ -24,20 +24,30 @@ export default class Board extends React.Component<
 
     this.placeStart = this.placeStart.bind(this);
     this.placeGoal = this.placeGoal.bind(this);
+    this.removeStart = this.removeStart.bind(this);
+    this.removeGoal = this.removeGoal.bind(this);
   }
 
   placeStart() {
+    if (!this.state.startPlaced) {
+      this.setState({ startPlaced: true });
+      return true;
+    } else return false;
+  }
+
+  placeGoal() {
     if (!this.state.goalPlaced) {
       this.setState({ goalPlaced: true });
       return true;
     } else return false;
   }
 
-  placeGoal() {
-    if (!this.state.startPlaced) {
-      this.setState({ startPlaced: true });
-      return true;
-    } else return false;
+  removeStart() {
+    this.setState({ startPlaced: false });
+  }
+
+  removeGoal() {
+    this.setState({ goalPlaced: false });
   }
 
   renderSquare(i: number) {
@@ -48,6 +58,8 @@ export default class Board extends React.Component<
         selectedType={this.props.selectedTileType}
         placeStart={this.placeStart}
         placeGoal={this.placeGoal}
+        removeStart={this.removeStart}
+        removeGoal={this.removeGoal}
       />
     );
   }

@@ -16,6 +16,8 @@ export default class Tile extends React.Component<
     selectedType: TileEnum;
     placeStart: () => boolean;
     placeGoal: () => boolean;
+    removeStart: () => void;
+    removeGoal: () => void;
   },
   {
     bg: string;
@@ -30,6 +32,8 @@ export default class Tile extends React.Component<
     selectedType: TileEnum;
     placeStart: () => boolean;
     placeGoal: () => boolean;
+    removeStart: () => void;
+    removeGoal: () => void;
   }) {
     super(props);
     this.state = {
@@ -42,6 +46,8 @@ export default class Tile extends React.Component<
 
   changeType() {
     if (this.props.selectedType !== this.state.type) {
+      this.handleSpecialRemovals();
+
       this.setState({ type: this.props.selectedType }, () => {
         switch (this.state.type) {
           case TileEnum.Default:
@@ -61,6 +67,12 @@ export default class Tile extends React.Component<
         }
       });
     }
+  }
+
+  handleSpecialRemovals() {
+    if (this.state.type === TileEnum.Start) {
+      this.props.removeStart();
+    } else if (this.state.type === TileEnum.Goal) this.props.removeGoal();
   }
 
   handleMouseEnter() {
