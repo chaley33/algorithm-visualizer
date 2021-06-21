@@ -1,18 +1,27 @@
 import React from "react";
 
+import Tile, { TileEnum } from "./Tile";
+
 export default class Board extends React.Component<
-  { isDown: boolean, mouseDown: (down: boolean) => void },
-  { count?: number; }
+  { isDown: boolean; mouseDown: (down: boolean) => void },
+  { tileType: TileEnum }
 > {
-  constructor(props: { isDown: boolean, mouseDown: (down: boolean) => void }) {
+  constructor(props: { isDown: boolean; mouseDown: (down: boolean) => void }) {
     super(props);
     this.state = {
-      count: 0
+      tileType: TileEnum.Default
     };
+
+    this.setTileType = this.setTileType.bind(this);
+  }
+
+  setTileType(type: TileEnum) {
+
   }
 
   renderSquare(i: number) {
-    return <Tile key={i} isDown={this.props.isDown} />;
+    const tileType = this.state.tileType;
+    return <Tile key={i} isDown={this.props.isDown} type={tileType}/>;
   }
 
   render() {
@@ -34,64 +43,6 @@ export default class Board extends React.Component<
           {tiles}
         </div>
       </>
-    );
-  }
-}
-
-export class Tile extends React.Component<
-  { key: number; isDown: boolean },
-  { bg: string; trueBg: string }
-> {
-  constructor(props: { key: number; isDown: boolean }) {
-    super(props);
-    this.state = {
-      bg: "white",
-      trueBg: "white",
-    };
-  }
-
-  changeColor() {
-    let newTrueBg = this.state.trueBg === "white" ? "black" : "white";
-
-    this.setState(
-      {
-        trueBg: newTrueBg,
-      },
-      () => {
-        this.handleHover();
-      }
-    );
-  }
-
-  handleMouseEnter() {
-    this.handleHover();
-
-    if (this.props.isDown) {
-      this.changeColor();
-    }
-  }
-
-  handleHover() {
-    let hoverColor = this.state.trueBg === "white" ? "#999" : "#333";
-
-    this.setState({
-      bg: hoverColor,
-    });
-  }
-
-  handleMouseLeave() {
-    this.setState({ bg: this.state.trueBg });
-  }
-
-  render() {
-    return (
-      <div
-        className="Tile"
-        onMouseDownCapture={this.changeColor.bind(this)}
-        onMouseEnter={this.handleMouseEnter.bind(this)}
-        onMouseLeave={this.handleMouseLeave.bind(this)}
-        style={{ background: this.state.bg }}
-      ></div>
     );
   }
 }
