@@ -1,6 +1,6 @@
 {
-  "homepage": "http://chaley33.github.io/algorithm-visualizer",
   "name": "algorithm-visualizer",
+  "homepage": "https://chaley33.github.io/algorithm-visualizer/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
